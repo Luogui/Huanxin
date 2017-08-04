@@ -11,18 +11,23 @@
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="对方的username" />
+        android:hint="username"/>
 
-
-    <Button
-        android:id="@+id/btn_star"
+    <EditText
+        android:id="@+id/edit_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="发起聊天" />
+        android:hint="password"/>
 
     <Button
-        android:id="@+id/btn_exit"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="退出登陆" />
+        android:text="注册"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"/>
 </LinearLayout>

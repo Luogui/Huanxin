@@ -5,38 +5,70 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
+
+/**
+ * 发起聊天
+ */
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnRegister;
-    private Button btnLogin;
+    private Button btnStar;
+    private Button btnExit;
     private EditText editName;
-    private EditText editPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogin = (Button) findViewById(R.id.btn_login);
-        btnRegister = (Button) findViewById(R.id.btn_register);
+        btnStar = (Button) findViewById(R.id.btn_star);
+        btnExit = (Button) findViewById(R.id.btn_exit);
 
         editName = (EditText) findViewById(R.id.edit_name);
-        editPwd = (EditText) findViewById(R.id.edit_pwd);
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //注册
+                //开启聊天
+                startChat();
             }
         });
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //登陆
+                //退出登陆
+                exitChat();
             }
         });
 
+    }
+
+    private void startChat(){
+
+    }
+
+    private void exitChat(){
+        EMClient.getInstance().logout(false, new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                //退出成功
+                finish();
+                Toast.makeText(MainActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Toast.makeText(MainActivity.this, "退出失败", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onProgress(int i, String s) {
+
+            }
+        });
     }
 }
